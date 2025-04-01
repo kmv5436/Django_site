@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_PORT = 1025
+
+LOGOUT_REDIRECT_URL = 'main:index' 
+
+AUTH_USER_MODEL = 'main.AdvUser'
 
 # Application definition
 

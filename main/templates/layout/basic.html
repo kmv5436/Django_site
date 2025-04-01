@@ -6,8 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Главная{% endblock %} - Доска
-        объявлений</title>
+        <title>{% block title %}Главная{% endblock %} - Доска объявлений</title>
         {% bootstrap_css %}
         <link rel="stylesheet" type="text/css"
         href="{% static 'main/style.css' %}">
@@ -19,24 +18,30 @@
         </header>
         <div class="row">
             <ul class="col nav justify-content-end border">
-                <li class="nav-item"><a class="nav-link"
-                href="#">Регистрация</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">Регистрация</a></li>
+                {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                     href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">Профиль</a>
                     <div class="dropdown-menu">
-                        <a class="#">Мои объявления</a>
-                        <a class="dropdown-item" href="#">Изменить личные
-                        данные</a>
-                        <a class="dropdown-item" href="#">Изменить пароль</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Выйти</a>
-                        <div class="dropdown-divider"></div>
+                        <a class="{% url 'main:profile' %}">Мои объявления</a>
+                        <a class="dropdown-item" href="{% url 'main:profile_change' %}">Изменить личные данные</a>
+                        <a class="dropdown-item" href="{% url 'main:password_change' %}">Изменить пароль</a>
+                        <hr class="dropdown-divider">
+                        <form class="px-3" method="post" action="{% url 'main:logout' %}"> 
+                            {% csrf_token %}
+                            {% bootstrap_button 'Выйти' button_class='btn-danger' %}
+                        </form>
+                        <hr class="dropdown-divider"> 
                         <a class="dropdown-item" href="#">Удалить</a>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">Вход</a></li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:login' %}">Вход</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
         <div class="row">
@@ -52,8 +57,7 @@
                 Транспорт</span>
                 <a class="nav-link" href="#">Легковой</a>
                 <a class="nav-link" href="#">Грузовой</a>
-                <a class="nav-link root" href="{% url 'main:other' page='about' %}">
-                    О сайте</a>
+                <a class="nav-link root" href="{% url 'main:other' page='about' %}">О сайте</a>
             </nav>
             <section class="col border py-2">
                 {% bootstrap_messages %}
