@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import profile
+from .views import by_rubric, profile
 from .views import index
 from .views import other_page
 from .views import BBLoginView
@@ -30,6 +30,7 @@ urlpatterns = [
                                      name='profile_change'),
     path('accounts/profile/', profile, name='profile'),
     path('accounts/login/', BBLoginView.as_view(), name='login'),
+    path('<int:pk>/', by_rubric, name='by_rubric'),
     path('<str:page>/', other_page, name='other'),
     path('', index, name='index')
 ]
