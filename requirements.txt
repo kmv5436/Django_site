@@ -1,7 +1,13 @@
+aiosmtpd==1.4.6
 asgiref==3.8.1
+atpublic==5.1
+attrs==25.3.0
 beautifulsoup4==4.13.3
 Django==5.1.7
 django-bootstrap4==25.1
+django-cleanup==9.0.0
+easy-thumbnails==2.10
+pillow==11.1.0
 soupsieve==2.6
 sqlparse==0.5.3
 typing_extensions==4.13.0
