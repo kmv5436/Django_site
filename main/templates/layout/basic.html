@@ -21,8 +21,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">Регистрация</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                    href="#" role="button" aria-haspopup="true"
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">Профиль</a>
                     <div class="dropdown-menu">
                         <a class="{% url 'main:profile' %}">Мои объявления</a>
@@ -46,8 +45,7 @@
         </div>
         <div class="row">
             <nav class="col-md-auto nav flex-column border">
-                <a class="nav-link root"
-                href="{% url 'main:index' %}">Главная</a>
+                <a class="nav-link root" href="{% url 'main:index' %}">Главная</a>
                 {% for rubric in rubrics %}
                 {% ifchanged rubric.super_rubric.pk %}
                 <span class="nav-link root font-weight-bold">
